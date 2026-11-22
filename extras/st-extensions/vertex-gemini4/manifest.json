@@ -1,0 +1,9 @@
+{
+    "display_name": "Vertex Gemini 4 Models",
+    "loading_order": 100,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "author": "tgtavern",
+    "version": "1.0.0"
+}

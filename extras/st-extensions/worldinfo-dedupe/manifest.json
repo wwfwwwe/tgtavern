@@ -1,0 +1,9 @@
+{
+    "display_name": "World Info Request Dedupe",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "author": "tgtavern",
+    "version": "1.0.0"
+}

@@ -1,0 +1,43 @@
+# ⚠️ 严禁商用，本套工具全部开源，免费。
+# 如果你是花钱买的、花钱找人部署的、或者在用别人收费的服务——你被骗了。请找对方退款，并举报。
+
+services:
+  sillytavern:
+    image: ghcr.io/sillytavern/sillytavern:1.19.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"          # 只在本机开放；要从外面访问请自己套隧道/反代，别直接开公网端口
+    volumes:
+      - ./data/st/config:/home/node/app/config
+      - ./data/st/data:/home/node/app/data
+      - ./data/st/plugins:/home/node/app/plugins
+      - ./data/st/extensions:/home/node/app/public/scripts/extensions/third-party
+
+  # 无头浏览器：常开酒馆页面，生成、脚本、正则、MVU 都在这个页面里照常跑
+  tavpage:
+    build: &build
+      context: .
+      args:
+        PIP_INDEX_URL: ""               # 国内可填 https://pypi.tuna.tsinghua.edu.cn/simple
+        PLAYWRIGHT_DOWNLOAD_HOST: ""    # 国内可填 https://registry.npmmirror.com/-/binary/playwright
+    image: tgtavern
+    restart: unless-stopped
+    command: python tavpage.py
+    shm_size: 1gb
+    volumes:
+      - ./data/bot:/data
+    depends_on:
+      - sillytavern
+
+  # TG bot：和 tavpage 共用网络（bot 经 127.0.0.1:9222 连浏览器）
+  bot:
+    build: *build
+    image: tgtavern
+    restart: unless-stopped
+    command: python bot.py
+    network_mode: "service:tavpage"
+    volumes:
+      - ./data/bot:/data
+      - ./data/st/data:/st/data
+    depends_on:
+      - tavpage

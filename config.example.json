@@ -1,0 +1,18 @@
+{
+  "token": "从 @BotFather 拿到的 bot token",
+  "allowed_ids": [123456789],
+
+  "st_url": "http://sillytavern:8000/",
+  "st_user": "酒馆 basicAuth 用户名",
+  "st_pass": "酒馆 basicAuth 密码",
+  "st_user_dir": "/st/data/default-user",
+
+  "tz": "Asia/Shanghai",
+  "location": "global",
+  "models": ["gemini-2.5-pro", "gemini-2.5-flash"],
+  "safety_threshold": "OFF",
+
+  "auto_clean": true,
+  "menu_life_sec": 30,
+  "note_life_max": 180
+}
