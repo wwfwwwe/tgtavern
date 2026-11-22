@@ -31,7 +31,7 @@ Telegram  ⇄  bot.py  ──CDP──▶  无头浏览器（tavpage.py）里常
 | `/wi` | 世界书开关 |
 | `/note` | 作者注释 |
 | `/api` `/model` | 切换 API / 中转站（读酒馆里存的密钥）、切换模型（可以输入任意模型名） |
-| `/img` | 插图：通过 ComfyUI 出图（读 st-chatu8 扩展的设置） |
+| `/img` | 插图：通过 ComfyUI 出图（读 [st-chatu8](https://github.com/damoshen123/st-chatu8) 扩展的设置） |
 | `/dm` | 主动消息：一段时间没说话，角色会来找你 |
 | `/stream` `/status` | 流式显示开关 / 当前状态 |
 
@@ -185,6 +185,8 @@ docker compose up -d --build
 本项目的代码全部由 Claude Opus 5.5 编写。作者本人只参与了思路构建，负责提出想法。
 
 部分设计思路参考了 [TauriTavern](https://github.com/Darkatse/TauriTavern)，感谢作者 Darkatse。本项目没有直接使用它的代码。
+
+插图功能借鉴了 [st-chatu8](https://github.com/damoshen123/st-chatu8)（智绘姬，作者「从前跟你一样」）的做法，并直接读取它的设置。
 
 ## 许可
 
